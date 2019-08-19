@@ -6,6 +6,7 @@
   - 프레임워크: 라우터, 상태 관리, 테스팅 등을 쉽게 결합할 수 있는 형태로 제공(프레임워크)
   - 점진적인 프레임워크(progressive framework)
     ![점진적인 프레임워크로서의 뷰의 의미](./image/점진적인 프레임워크로서의 뷰의 의미.png)
+    ![framwork](./image/framwork.png)
 - Vue.js의 특징
   - UI 화면단 라이브러리
   ```
