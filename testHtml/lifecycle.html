@@ -1,0 +1,103 @@
+<html>
+  <head>
+    <title>lifecycle test</title>
+  </head>
+  <body>
+    <div id="app">
+      <p>{{message}}</p>
+      <button id="updateBtn" onclick="updateVue()">Update {{number}}</button>
+      <button onclick="destroyVue()">Destroy</button>
+      <list v-bind:items="items"></list>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+    <script>
+      let list = {
+        data: function() {
+          return {
+            message: 'message'
+          }
+        },
+        props: ['items'],
+        template: '<ul id="list"><li v-for="item in items" v-bind:id="bindId(item.message)">{{item.message}}</li></ul>',
+        methods: {
+          bindId: function(message) {
+            return 'item-' + message;
+          }
+        }
+      };
+
+      let vue = new Vue({
+        el: '#app',
+        data: {
+          message: 'Hello Vue.js',
+          number: 0,
+          items: []
+        },
+        components: {
+          'list': list
+        },
+        beforeCreate: function() {
+          console.log("beforeCreate");
+          // undefined
+          console.log(this.message);
+        },
+        created: function() {
+          console.log("created");
+          // Hello Vue.js
+          console.log(this.message);
+          for(let i = 0; i < 5; i++) {
+            this.items.push({message: i});
+          }          
+        },
+        beforeMount: function() {
+          console.log("beforeMount");
+        },
+        mounted: function() {
+          console.log("mounted");
+          // let dom = document.getElementById('item-0');
+          // dom.style.color = "red";
+          // nextTick
+          // this.$nextTick(function() {
+          //   let dom = document.getElementById('item-0');
+          //   dom.style.color = "red";
+          // })
+        },
+        beforeUpdate: function() {
+          console.log("beforeUpdate");
+          console.log(this.number);
+          // for(let i = 0; i < 5; i++) {
+          //   this.items[i].message = this.number + i;
+          // }
+          // 값 변경 시 beforeUpdate 재 실행
+          // this.message = "Click Vue " + this.number;
+          // this.number++;
+          // 치환된 값을 감시 
+        },
+        updated: function() {
+          console.log("updated");
+          // document.getElementById('updateBtn').style.display = "none";
+          // vue.message = "Click Vue " + vue.number;
+          // vue.message = "Click Vue " + vue.number + vue.message;
+        },
+        beforeDestroy: function() {
+          console.log("beforeDestroy");
+          // this.message="destroyed";
+          // console.log(vue.message);
+          // console.log(this.message);
+        },
+        destroyed: function() {
+          console.log("destroyed");
+          // this.message="destroyed";
+          // console.log(vue.message);
+          // console.log(this.message);
+        }
+      });
+      let updateVue = function() {
+        vue.number = vue.number + 1;
+      }
+      let destroyVue = function() {
+        vue.$destroy();
+      }
+    </script>
+  </body>
+</html>

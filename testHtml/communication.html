@@ -1,0 +1,71 @@
+<html>
+  <head>
+    <title>communication</title>
+  </head>
+  <body>
+    <div id="app">
+      <cmp1></cmp1>
+      <cmp2></cmp2>
+      
+      <!-- <h2>props</h2>
+      <propscmp v-bind:propsdata="message"></propscmp> -->
+
+      <!-- <h2>event</h2>
+      <emitcmp v-on:show-log="printText"></emitcmp> -->
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+    <script>
+      let cmp1 = {
+        template: '<p>첫 번쨰 지역 컴포넌트: {{cmp1Data}}</p>',
+        data: function() {
+          return {
+            cmp1Data: 100
+          }
+        }
+      };
+      let cmp2 = {
+        template: '<p>두 번쨰 지역 컴포넌트: {{cmp1Data}}</p>',
+        data: function() {
+          return {
+            cmp1Data: cmp1.data.cmp1Data
+          }
+        }
+      };
+
+      // let propscmp = {
+      //   props: ['propsdata'],
+      //   template: '<p>{{propsdata}}</p>'
+      // };
+      // Vue.component('propscmp', {
+      //   props: ['propsdata'],
+      //   template: '<p>{{propsdata}}</p>'
+      // });
+
+      // let emitcmp = {
+      //   template: '<button v-on:click="showLog">show</button>',
+      //   methods: {
+      //     showLog: function() {
+      //       this.$emit('show-log');
+      //     }
+      //   }
+      // };
+      new Vue({
+        el: '#app',
+        // data: {
+        //   message: 'This is Props!'
+        // },
+        components: {
+          'cmp1': cmp1,
+          'cmp2': cmp2,
+          // 'propscmp': propscmp
+          // 'emitcmp': emitcmp
+        },
+        // methods: {
+        //   printText: function() {
+        //     console.log("received an event");
+        //   }
+        // }
+      })
+    </script>
+  </body>
+</html>

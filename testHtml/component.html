@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <title>component</title>
+  </head>
+  <body>
+    <div id="app">
+      <button onclick="doit()">컴포넌트 등록</button>
+      <global-component></global-component>
+      <local-component></local-component>
+    </div>
+    <div id="app2">
+      <button onclick="doit2()">컴포넌트 등록2</button>
+      <global-component></global-component>
+      <local-component></local-component>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+    <script>
+      Vue.component('global-component', {
+        template: '<p>전역 컴포넌트</p>'
+      });
+      let localComponent = {
+        template: '<p>지역 컴포넌트</p>'
+      };
+      let doit = function() {
+        new Vue({
+          el: '#app',
+          components: {
+            'local-component': localComponent
+          }
+        })
+      };
+      let doit2 = function() {
+        new Vue({
+          el: '#app2',
+        })
+      };
+    </script>
+  </body>
+</html>
