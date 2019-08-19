@@ -108,7 +108,7 @@
     });
     ```
     
-![globalComponent](./image/globalComoponent.png)
+![globalComponent](./image/globalComponent.png)
   - 지역 컴포넌트: 인스턴스에 components 속성을 이용해 등록
     ```
     new Vue({
