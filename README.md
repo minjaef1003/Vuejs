@@ -96,8 +96,10 @@
     })
   ```
   ```
-    options 속성이나 콜백에 created: () => console.log(this.a) 이나 vm.$watch('a', newValue => this.myMethod()) 와 같은 화살표 함수 사용을 지양하기 바랍니다.
-    화살표 함수들은 부모 컨텍스트에 바인딩되기 때문에, this 컨텍스트가 호출하는 Vue 인스턴스에서 사용할 경우 Uncaught TypeError: Cannot read property of undefined 또는 Uncaught TypeError: this.myMethod is not a function와 같은 오류가 발생하게 됩니다.
+    options 속성이나 콜백에 화살표 함수 사용을 지양하기 바랍니다.
+    ex) created: () => console.log(this.a) 이나 vm.$watch('a', newValue => this.myMethod())
+    화살표 함수들은 부모 컨텍스트에 바인딩되기 때문에, this 컨텍스트가 호출하는 Vue 인스턴스에서 사용할 경우 오류가 발생하게 됩니다.
+    ex) Uncaught TypeError: Cannot read property of undefined 또는 Uncaught TypeError: this.myMethod is not a function
   ```
 - 뷰 컴포넌트 등록하기
   - 전역 컴포넌트: 뷰 라이브러리를 로딩하고 나면 접근 가능한 Vue 변수를 이용해서 등록
