@@ -82,14 +82,15 @@
         },
         beforeDestroy: function() {
           console.log("beforeDestroy");
-          // this.message="destroyed";
-          // console.log(vue.message);
+          // console.log(this);
+          // console.log(this.message);
+          // this.message = null;
+          // delete this.message;
           // console.log(this.message);
         },
         destroyed: function() {
           console.log("destroyed");
-          // this.message="destroyed";
-          // console.log(vue.message);
+          // console.log(this);
           // console.log(this.message);
         }
       });
