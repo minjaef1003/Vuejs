@@ -82,6 +82,7 @@
     - beforeDestroy: 뷰 인스턴스가 파괴되기 직전에 호출.
       - 인스턴스에 아직 접근이 가능하기 때문에 인스턴스의 데이터를 삭제하기 좋다.
     - destroyed: 뷰 인스턴스 파괴 후 호출.
+    - 예제) http://jsfiddle.net/saqueib/pLvyhskp/ 
   - 라이프 사이클 훅(hook): 라이프 사이클 속성에서 실행되는 커스텀 로직
     
 ![lifecycle_2](./image/lifecycle_2.png)
