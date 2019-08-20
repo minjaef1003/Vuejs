@@ -141,6 +141,7 @@
     <child-component v-on:이벤트명="상위 컴포넌트의 메서드명"></child-component>
   ```
   - 같은 레벨의 컴포넌트
+  
   ![sameLevelComunication](./image/sameLevelComunication.png)
   - 이벤트 버스: 관계 없는 컴포넌트 간 통신 가능
   ```
